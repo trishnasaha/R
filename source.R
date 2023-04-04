@@ -43,3 +43,5 @@ n <- length(cr)
 cr <- corr("specdata", 1000)                
 cr <- sort(cr)
 print(c(n, round(cr, 4))) # 0.0000 -0.0190  0.0419  0.1901
+
+#week3 assignment
