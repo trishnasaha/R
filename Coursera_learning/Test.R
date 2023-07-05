@@ -61,3 +61,62 @@ y <- if(x < 3) {
 } else {
   10
 }
+
+
+
+
+##quiz3
+
+library(datasets)
+data(iris)
+?iris
+
+z <- data.frame(iris)
+head(z)
+p <- subset(z, Species == "virginica")
+head(p)
+mean(p$Sepal.Length)
+round(mean(p$Sepal.Length))
+
+
+apply(iris[, 1:4], 2, mean) 
+#Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+#5.843333     3.057333     3.758000     1.199333
+
+library(datasets)
+data(mtcars)
+?mtcars
+head(mtcars)
+
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+#4        6        8 
+#26.66364 19.74286 15.10000 
+tapply(mtcars$mpg, mtcars$cyl, mean)
+#4        6        8 
+#26.66364 19.74286 15.10000 
+with(mtcars, tapply(mpg, cyl, mean))
+#4        6        8 
+#26.66364 19.74286 15.10000 
+
+#what is the absolute difference between the average horsepower of 4-cylinder cars and the average horsepower of 8-cylinder cars?
+car <- tapply(mtcars$hp, mtcars$cyl, mean)
+car
+#4         6         8 
+#82.63636 122.28571 209.21429 
+round(abs(car[3] -car[1]))
+#8 
+#127 
+round(abs(car[1] -car[3]))
+#4 
+#127
+
+
+
+
+set.seed(1)
+rpois(5, 2)
+
+set.seed(10)
+x <- rep(0:1, each = 5)
+e <- rnorm(10, 0, 20)
+y <- 0.5 + 2 * x + e

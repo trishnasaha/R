@@ -45,3 +45,27 @@ cr <- sort(cr)
 print(c(n, round(cr, 4))) # 0.0000 -0.0190  0.0419  0.1901
 
 #week3 assignment
+setwd("/home/rajesh/Dropbox/00_DROPBOX/GitHub/R/Coursera_learning/")
+source("lexical_scoping.R")
+cube <- make.power(3)
+ls(environment(cube))
+get("n", environment(cube))
+get("pow", environment(cube))
+cube(3)
+
+square <- make.power(2)
+ls(environment(square))
+get("n", environment(square))
+get("pow", environment(square))
+square(3)
+
+
+source("ProgrammingAssignment2/cachematrix.R")
+myMatrix <- makeCacheMatrix(matrix(1:4, 2, 2))
+myMatrix$get()
+
+myMatrix$getsolve()
+
+cacheSolve(myMatrix)
+
+
