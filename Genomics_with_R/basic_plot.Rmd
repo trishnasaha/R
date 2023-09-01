@@ -1,0 +1,89 @@
+---
+title: "plotting_in_R_with_base_graphics"
+output: html_document
+date: "2023-09-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+# normal distribution histogram plot
+
+x <- rnorm(50) #sample 50 values from normal distribution and store them in vector x
+hist(x) #plot histogram of those values
+
+# assign plot title and color
+
+hist(x, main="histogram", col="sky blue")
+
+# scatter plot
+x <-rnorm(50)
+y <-rnorm(50)
+plot(x,y, main="scatter plot", ylab="y values", xlab="x values")
+
+# box plot
+x <-rnorm(50)
+y <-rnorm(50)
+boxplot(x,y, main="box plot")
+
+# barplot of percentage values with barplot() function
+perc=c(50,80,75,25)
+barplot(height=perc,
+names.arg=c("CpGi","exon","CpGi","exon"),
+ylab="percentages", main="percentage plot!",
+col=c("pink","pink","sky blue","sky blue"))
+
+# add legend with legend() function
+
+legend("topright", legend=c("test","control"),
+fill=c("pink","sky blue"))
+
+
+# combine multiple plot side by side
+# simple combination with par() function
+par(mfrow=c(1,2)) # mfrow=c(nrows, ncols)
+
+# arrange plot side by side
+hist(x, main="histogram", col="sky blue")
+plot(x,y,main="scatter plot",
+ylab="y values", xlab="x values")
+
+# arrange plots on top of each other
+par(mfrow=c(2,1))
+hist(x, main="histogram", col="sky blue")
+plot(x,y,main="scatter plot",
+ylab="y values", xlab="x values")
+
+# save plots
+
+pdf("myplot.pdf", width=5, height=5)
+plot(x,y)
+dev.off()
+
+# or
+
+plot(x,y)
+dev.copy(pdf,"myplot.pdf",width=7,height=5)
+dev.off()
